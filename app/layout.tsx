@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import CartProvider from "@/components/CartProvider";
 import JsonLd from "@/components/JsonLd";
-import { SITE_URL, SEO_DESCRIPTION, KEYWORDS, businessJsonLd, websiteJsonLd } from "@/lib/seo";
+import { SITE_URL, SEO_DESCRIPTION, KEYWORDS, OG_IMAGE, businessJsonLd, websiteJsonLd } from "@/lib/seo";
 
 const serif = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 const sans = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -43,8 +43,9 @@ export const metadata: Metadata = {
     url: "./",
     title: TITLE,
     description: SEO_DESCRIPTION,
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "VaaSaa Interiors – Premium interior materials in Amritsar" }],
   },
-  twitter: { card: "summary_large_image", title: TITLE, description: SEO_DESCRIPTION },
+  twitter: { card: "summary_large_image", title: TITLE, description: SEO_DESCRIPTION, images: [OG_IMAGE] },
   other: {
     "geo.region": "IN-PB",
     "geo.placename": "Amritsar",

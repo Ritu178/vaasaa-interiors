@@ -13,6 +13,7 @@ export const KEYWORDS = [
   "Majitha Road interiors", "Punjab interior decor",
 ];
 
+export const OG_IMAGE = "/og-image.jpg";
 const absolute = (p: string) => (p.startsWith("http") ? p : `${SITE_URL}${p}`);
 
 export const businessJsonLd = {
@@ -25,7 +26,7 @@ export const businessJsonLd = {
   description: SEO_DESCRIPTION,
   url: SITE_URL,
   logo: absolute("/logo.png"),
-  image: [absolute("/logo.png"), absolute("/opengraph-image")],
+  image: [absolute("/logo.png"), absolute("/og-image.jpg")],
   telephone: `+91${BRAND.phone}`,
   priceRange: "₹₹",
   currenciesAccepted: "INR",
@@ -94,13 +95,13 @@ export function pageMeta(title: string, description: string, path: string, short
       url: path,
       title: `${shortTitle} | VaaSaa Interiors`,
       description,
-      images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "VaaSaa Interiors – Premium interior materials in Amritsar" }],
+      images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "VaaSaa Interiors – Premium interior materials in Amritsar" }],
     },
     twitter: {
       card: "summary_large_image" as const,
       title: `${shortTitle} | VaaSaa Interiors`,
       description,
-      images: ["/twitter-image"],
+      images: [OG_IMAGE],
     },
   };
 }
