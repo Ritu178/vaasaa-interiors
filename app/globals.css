@@ -1,6 +1,12 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
+  --color-surface: #ffffff;
+  --color-ink: #173404;
+  --color-ink2: #27500a;
+  --color-line: #e4dcc6;
   --color-brand: #173404;
   --color-brand2: #27500a;
   --color-gold: #c9a24a;
@@ -30,7 +36,7 @@
   --animate-zoom-in: zoom-in 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.1) both;
 
   @keyframes dash {
-    to { stroke-dashoffset: -28; }
+    to { stroke-dashoffset: -12.1; }
   }
   @keyframes bob {
     0%, 100% { transform: translateY(0); }
@@ -97,17 +103,36 @@
   }
 }
 
+/* Dark mode: re-point the colour tokens (unlayered so it wins over the theme layer) */
+.dark {
+  color-scheme: dark;
+  --color-cream: #0e1809;
+  --color-cream2: #131f0d;
+  --color-surface: #1a2814;
+  --color-ink: #f1ead6;
+  --color-ink2: #b7d98a;
+  --color-line: #2f4125;
+  --color-neutral-400: #8d8a7c;
+  --color-neutral-500: #a29f90;
+  --color-neutral-600: #c4c0b0;
+  --color-neutral-700: #ddd8c8;
+  --color-neutral-800: #ece7d8;
+}
+.dark iframe { filter: invert(0.92) hue-rotate(180deg); }
+.dark img { filter: brightness(0.92); }
+body, header, section, footer { transition: background-color .3s ease, color .3s ease; }
+
 @layer base {
   html { scroll-behavior: smooth; }
   body { @apply bg-cream font-sans text-neutral-800 antialiased; }
-  h1, h2, h3, h4 { @apply font-serif text-brand leading-tight; }
+  h1, h2, h3, h4 { @apply font-serif text-ink leading-tight; }
   img { @apply block h-full w-full object-cover; }
 }
 
 @layer components {
   .container-x { @apply mx-auto w-full max-w-6xl px-5; }
   .section { @apply py-14 md:py-20; }
-  .title { @apply relative mb-12 text-center font-serif text-3xl text-brand md:text-4xl; }
+  .title { @apply relative mb-12 text-center font-serif text-3xl text-ink md:text-4xl; }
   .title::after { content: ""; @apply mx-auto mt-3 block h-1 w-16 rounded-full bg-gold; }
   .title.left { @apply text-left; }
   .title.left::after { @apply mx-0; }
@@ -122,15 +147,15 @@
   .btn:hover::after { left: 150%; }
   .btn-gold { @apply bg-gold text-brand; }
   .btn-green { @apply bg-brand2 text-white; }
-  .btn-outline { @apply border-brand text-brand hover:bg-brand hover:text-white; }
+  .btn-outline { @apply border-ink text-ink hover:bg-ink hover:text-cream; }
   .btn-block { @apply w-full; }
 
-  .card { @apply overflow-hidden rounded-3xl bg-white shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl; }
-  .pill { @apply cursor-pointer rounded-full border border-[#d9cfb4] bg-white px-5 py-2 text-sm text-brand transition-all duration-300 hover:-translate-y-0.5 hover:border-gold; }
+  .card { @apply overflow-hidden rounded-3xl bg-surface shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl; }
+  .pill { @apply cursor-pointer rounded-full border border-line bg-surface px-5 py-2 text-sm text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-gold; }
   .pill.on { @apply border-brand bg-brand text-white shadow-lg; }
   .label { @apply text-[11px] font-semibold uppercase tracking-widest text-gold; }
   .field { @apply flex flex-col gap-1.5 text-sm font-medium; }
-  .field input, .field select, .field textarea { @apply rounded-xl border-[1.5px] border-[#ddd3b8] bg-cream px-3.5 py-3 font-normal outline-none transition focus:border-gold focus:ring-4 focus:ring-gold/20; }
+  .field input, .field select, .field textarea { @apply rounded-xl border-[1.5px] border-line bg-cream px-3.5 py-3 font-normal outline-none transition focus:border-gold focus:ring-4 focus:ring-gold/20; }
 
   .reveal { @apply translate-y-10 opacity-0 transition-all duration-700 ease-out; }
   .reveal.in { @apply translate-y-0 opacity-100; }

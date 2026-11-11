@@ -25,7 +25,7 @@ export default function Offers() {
                   <div className="p-6">
                     <span className="label">{o.valid}</span>
                     <h3 className="mt-1 text-2xl">{o.title}</h3>
-                    <p className="my-2 font-serif text-3xl text-brand2">{o.price}</p>
+                    <p className="my-2 font-serif text-3xl text-ink2">{o.price}</p>
                     <p className="mb-5 text-neutral-600">{o.desc}</p>
                     <a className="btn btn-green btn-block" target="_blank" rel="noreferrer"
                       href={waLink(`Hello VaaSaa Interiors, I want to claim the "${o.title} – ${o.price}" offer.`)}>

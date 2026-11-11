@@ -37,10 +37,10 @@ export default function CheckoutView() {
 
   if (done)
     return (
-      <div className="mx-auto max-w-xl animate-fade-up rounded-3xl bg-white p-10 text-center shadow-xl">
+      <div className="mx-auto max-w-xl animate-fade-up rounded-3xl bg-surface p-10 text-center shadow-xl">
         <div className="mx-auto mb-5 grid size-20 animate-pop place-items-center rounded-full bg-brand2 text-4xl text-white">✓</div>
         <h2 className="text-3xl">Order request sent!</h2>
-        <p className="mt-2 text-neutral-600">Order <strong className="text-brand">{done.id}</strong> · {inr(done.total)}</p>
+        <p className="mt-2 text-neutral-600">Order <strong className="text-ink">{done.id}</strong> · {inr(done.total)}</p>
         <p className="mt-4 text-neutral-600">WhatsApp should have opened with your order details – just press <em>send</em>. Our team will confirm availability, delivery charges and payment with you shortly.</p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <a className="btn btn-green" href={waLink(done.msg)} target="_blank" rel="noreferrer">Open WhatsApp again</a>
@@ -63,9 +63,9 @@ export default function CheckoutView() {
     <form onSubmit={submit} className="grid items-start gap-8 lg:grid-cols-[1.25fr_1fr]">
       <div className="space-y-8">
         {/* cart */}
-        <section className="rounded-3xl bg-white p-6 shadow-lg">
+        <section className="rounded-3xl bg-surface p-6 shadow-lg">
           <h2 className="mb-5 text-2xl">Your cart</h2>
-          <ul className="divide-y divide-[#eee6d1]">
+          <ul className="divide-y divide-line">
             {lines.map(({ product: p, qty }) => (
               <li key={p.id} className="grid animate-fade-in grid-cols-[4.5rem_1fr_auto] items-center gap-x-4 gap-y-3 py-4 sm:grid-cols-[5rem_1fr_auto_auto_auto]">
                 <div className="row-span-1 size-[4.5rem] overflow-hidden rounded-2xl sm:size-20"><Img id={p.img} alt={p.name} w={300} /></div>
@@ -75,14 +75,14 @@ export default function CheckoutView() {
                 </div>
                 <button type="button" aria-label={`Remove ${p.name}`} className="grid size-8 place-items-center justify-self-end rounded-full text-xl text-neutral-400 transition hover:scale-110 hover:bg-red-50 hover:text-red-600 sm:order-last" onClick={() => remove(p.id)}>×</button>
                 <div className="col-span-3 flex items-center justify-between gap-3 sm:col-span-1 sm:contents">
-                  <div className="flex items-center overflow-hidden rounded-full border border-[#d9cfb4] sm:order-4">
+                  <div className="flex items-center overflow-hidden rounded-full border border-line sm:order-4">
                     <button type="button" aria-label="Decrease" className="size-9 transition hover:bg-gold/30" onClick={() => setQty(p.id, qty - 1)}>−</button>
                     <input aria-label={`Quantity in ${p.unit}`} type="number" min={1} value={qty}
                       onChange={(e) => setQty(p.id, Math.max(1, +e.target.value || 1))}
                       className="w-14 bg-transparent text-center outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none" />
                     <button type="button" aria-label="Increase" className="size-9 transition hover:bg-gold/30" onClick={() => setQty(p.id, qty + 1)}>+</button>
                   </div>
-                  <p className="min-w-20 text-right font-bold text-brand2 sm:order-5">{inr(qty * p.price!)}</p>
+                  <p className="min-w-20 text-right font-bold text-ink2 sm:order-5">{inr(qty * p.price!)}</p>
                 </div>
               </li>
             ))}
@@ -91,7 +91,7 @@ export default function CheckoutView() {
         </section>
 
         {/* details */}
-        <section className="rounded-3xl bg-white p-6 shadow-lg">
+        <section className="rounded-3xl bg-surface p-6 shadow-lg">
           <h2 className="mb-5 text-2xl">Your details</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="field">Full name<input name="name" required placeholder="Your name" /></label>
@@ -102,7 +102,7 @@ export default function CheckoutView() {
           <div className="my-6 grid grid-cols-2 gap-3">
             {([["delivery", "Home delivery", "truck"], ["pickup", "Showroom pickup", "store"]] as const).map(([k, l, ic]) => (
               <button type="button" key={k} onClick={() => setMode(k)}
-                className={`rounded-2xl border-2 p-4 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 ${mode === k ? "border-brand bg-brand text-white shadow-lg" : "border-[#ddd3b8] bg-cream"}`}><Icon name={ic} className="mx-auto mb-1 size-6" />{l}</button>
+                className={`rounded-2xl border-2 p-4 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 ${mode === k ? "border-brand bg-brand text-white shadow-lg" : "border-line bg-cream"}`}><Icon name={ic} className="mx-auto mb-1 size-6" />{l}</button>
             ))}
           </div>
 
@@ -120,11 +120,11 @@ export default function CheckoutView() {
         </section>
 
         {/* payment */}
-        <section className="rounded-3xl bg-white p-6 shadow-lg">
+        <section className="rounded-3xl bg-surface p-6 shadow-lg">
           <h2 className="mb-5 text-2xl">Payment</h2>
           <div className="grid gap-3">
             {PAY.map((p) => (
-              <label key={p.id} className={`flex cursor-pointer items-center gap-3 rounded-2xl border-2 p-4 transition-all duration-300 ${pay === p.id ? "border-brand bg-brand/5" : "border-[#ddd3b8] hover:border-gold"}`}>
+              <label key={p.id} className={`flex cursor-pointer items-center gap-3 rounded-2xl border-2 p-4 transition-all duration-300 ${pay === p.id ? "border-brand bg-brand/5" : "border-line hover:border-gold"}`}>
                 <input type="radio" name="pay" checked={pay === p.id} onChange={() => setPay(p.id)} className="size-4 accent-brand2" />
                 <span><strong className="block text-sm">{p.label}</strong><span className="text-xs text-neutral-500">{p.hint}</span></span>
               </label>

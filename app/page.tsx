@@ -16,7 +16,7 @@ export default function Home() {
           <div>
             <span className="inline-block animate-fade-up text-xs font-semibold uppercase tracking-[0.25em] text-gold">{BRAND.tagline}</span>
             <h1 className="mb-5 mt-4 animate-fade-up text-4xl [animation-delay:120ms] md:text-6xl">
-              Premium interior materials, all under one roof in <span className="text-brand2 underline decoration-gold decoration-4 underline-offset-8">Amritsar</span>
+              Premium interior materials, all under one roof in <span className="text-ink2 underline decoration-gold decoration-4 underline-offset-8">Amritsar</span>
             </h1>
             <p className="max-w-lg animate-fade-up text-lg text-neutral-700 [animation-delay:240ms]">
               From fluted panels and UV marble to wallpapers, fabrics and artificial grass – everything to finish your dream home, with installation and design advice from our team.
@@ -28,15 +28,15 @@ export default function Home() {
             <p className="mt-4 animate-fade-up text-sm opacity-70 [animation-delay:480ms]">{BRAND.sub}</p>
           </div>
           <div className="relative animate-fade-up [animation-delay:300ms]">
-            <svg className="pointer-events-none absolute -inset-3 z-10" style={{ width: "calc(100% + 24px)", height: "calc(100% + 24px)" }} aria-hidden>
-              <rect x="2" y="2" rx="38" className="animate-dash fill-none stroke-gold" strokeWidth="2.5" strokeDasharray="4 10" strokeLinecap="round" style={{ width: "calc(100% - 4px)", height: "calc(100% - 4px)" }} />
+            <svg className="pointer-events-none absolute -inset-4 z-0" style={{ width: "calc(100% + 32px)", height: "calc(100% + 32px)" }} aria-hidden>
+              <rect x="1.5" y="1.5" rx="48" className="animate-dash fill-none stroke-gold" strokeWidth="3" strokeDasharray="0.1 12" strokeLinecap="round" style={{ width: "calc(100% - 3px)", height: "calc(100% - 3px)" }} />
             </svg>
             <div className="relative h-80 animate-bob overflow-hidden rounded-[2rem] shadow-2xl shadow-brand/30 md:h-[30rem]">
               <Img id={IMG.hero} alt="VaaSaa Interiors showroom" w={1200} />
             </div>
-            <div className="absolute -bottom-5 -left-3 rounded-2xl bg-white px-5 py-3 shadow-xl">
+            <div className="absolute -bottom-6 -left-4 z-20 rounded-2xl bg-surface px-5 py-3 shadow-xl">
               <p className="text-xs text-neutral-500">Wallpaper from</p>
-              <p className="font-serif text-2xl text-brand2">₹199</p>
+              <p className="font-serif text-2xl text-ink2">₹199</p>
             </div>
           </div>
         </div>

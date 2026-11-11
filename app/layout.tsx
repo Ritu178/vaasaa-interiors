@@ -11,12 +11,17 @@ import { SITE_URL, SEO_DESCRIPTION, KEYWORDS, OG_IMAGE, businessJsonLd, websiteJ
 const serif = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 const sans = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
+const THEME_SCRIPT = `(function(){try{var t=localStorage.getItem("theme");var d=t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;if(d)document.documentElement.classList.add("dark")}catch(e){}})();`;
+
 const TITLE = "VaaSaa Interiors – Premium Interior Materials in Amritsar";
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#173404",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#173404" },
+    { media: "(prefers-color-scheme: dark)", color: "#0e1809" },
+  ],
 };
 
 export const metadata: Metadata = {
@@ -61,8 +66,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-IN" className={`${serif.variable} ${sans.variable}`}>
+    <html lang="en-IN" suppressHydrationWarning className={`${serif.variable} ${sans.variable}`}>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
         <JsonLd data={[businessJsonLd, websiteJsonLd]} />
       </head>
       <body>

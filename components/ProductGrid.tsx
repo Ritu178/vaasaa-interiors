@@ -26,7 +26,7 @@ export default function ProductGrid() {
               <div className="p-5">
                 <span className="label">{p.cat}</span>
                 <h3 className="mt-1 text-xl">{p.name}</h3>
-                <p className="mb-4 mt-1 font-bold text-brand2">{priceLabel(p)}</p>
+                <p className="mb-4 mt-1 font-bold text-ink2">{priceLabel(p)}</p>
                 <div className="grid gap-2.5">
                   {p.price && (
                     <button className="btn btn-gold btn-block group/cart" onClick={() => add(p)}><Icon name="cart" className="size-4" /> Add to cart</button>

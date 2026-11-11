@@ -18,7 +18,7 @@ export default function Contact() {
           <div className="animate-slide-left"><ContactForm /></div>
           <div className="animate-slide-right">
             <div className="space-y-6">
-              <div className="space-y-4 rounded-3xl bg-white p-8 shadow-lg">
+              <div className="space-y-4 rounded-3xl bg-surface p-8 shadow-lg">
                 <h2 className="text-3xl">Showroom details</h2>
                 <p><strong>Address</strong><br />{BRAND.address}</p>
                 <p><strong>Phone / WhatsApp</strong><br />{BRAND.phone}</p>

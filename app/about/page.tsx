@@ -34,7 +34,7 @@ export default function About() {
             <p className="mb-4">
               Our own team handles installation, and we are happy to talk through your room and suggest materials that suit it – no charge for the advice.
             </p>
-            <blockquote className="mt-6 rounded-r-2xl border-l-4 border-gold bg-white p-5 shadow">
+            <blockquote className="mt-6 rounded-r-2xl border-l-4 border-gold bg-surface p-5 shadow">
               <strong>Our promise:</strong> beautiful spaces, better living – with fair prices and careful work.
             </blockquote>
             <div className="mt-8 flex flex-wrap gap-4">
