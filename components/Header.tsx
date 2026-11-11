@@ -20,12 +20,12 @@ export default function Header() {
 
   return (
     <header className={`sticky top-0 z-50 border-b border-[#e4dcc6] backdrop-blur-xl transition-all duration-300 ${scrolled ? "bg-cream/95 shadow-lg" : "bg-cream/80"}`}>
-      <div className={`container-x flex items-center justify-between transition-all duration-300 ${scrolled ? "h-16" : "h-20"}`}>
+      <div className={`container-x flex items-center justify-between transition-all duration-300 ${scrolled ? "h-[4.75rem] md:h-24" : "h-24 md:h-28"}`}>
         <Link href="/" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
-          <img src="/logo.png" alt="VaaSaa Interiors" className="size-12 flex-none rounded-full shadow-md transition-transform duration-500 group-hover:rotate-[360deg]" />
+          <img src="/logo.png" alt="VaaSaa Interiors" className={`flex-none rounded-full shadow-xl ring-[3px] ring-gold/80 ring-offset-2 ring-offset-cream transition-all duration-500 group-hover:scale-105 group-hover:ring-gold ${scrolled ? "size-14 md:size-[4.5rem]" : "size-16 md:size-[5.5rem]"}`} />
           <span className="flex flex-col leading-none">
-            <strong className="font-serif text-xl text-brand">VaaSaa</strong>
-            <small className="text-[10px] uppercase tracking-[0.3em] text-gold">Interiors</small>
+            <strong className="font-serif text-2xl text-brand md:text-3xl">VaaSaa</strong>
+            <small className="mt-1 text-[11px] uppercase tracking-[0.3em] text-gold md:text-xs">Interiors</small>
           </span>
         </Link>
 

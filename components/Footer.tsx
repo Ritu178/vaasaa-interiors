@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="bg-brand pt-14 text-[#e8e3d0]">
       <div className="container-x grid gap-10 pb-10 md:grid-cols-[1.2fr_1fr_1.4fr]">
         <div>
-          <img src="/logo.png" alt="VaaSaa Interiors" className="mb-3 size-24 rounded-full" />
+          <img src="/logo.png" alt="VaaSaa Interiors" className="mb-3 size-28 rounded-full ring-[3px] ring-gold/70" />
           <h3 className="mb-2 text-white">VaaSaa Interiors</h3>
           <p className="text-gold">{BRAND.tagline}</p>
           <p>{BRAND.sub}</p>

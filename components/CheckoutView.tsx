@@ -66,21 +66,23 @@ export default function CheckoutView() {
           <h2 className="mb-5 text-2xl">Your cart</h2>
           <ul className="divide-y divide-[#eee6d1]">
             {lines.map(({ product: p, qty }) => (
-              <li key={p.id} className="flex animate-fade-in flex-wrap items-center gap-4 py-4">
-                <div className="size-20 flex-none overflow-hidden rounded-2xl"><Img id={p.img} alt={p.name} w={300} /></div>
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-base">{p.name}</h3>
+              <li key={p.id} className="grid animate-fade-in grid-cols-[4.5rem_1fr_auto] items-center gap-x-4 gap-y-3 py-4 sm:grid-cols-[5rem_1fr_auto_auto_auto]">
+                <div className="row-span-1 size-[4.5rem] overflow-hidden rounded-2xl sm:size-20"><Img id={p.img} alt={p.name} w={300} /></div>
+                <div className="min-w-0">
+                  <h3 className="text-base leading-snug">{p.name}</h3>
                   <p className="text-sm text-neutral-500">{inr(p.price!)} / {p.unit}</p>
                 </div>
-                <div className="flex items-center overflow-hidden rounded-full border border-[#d9cfb4]">
-                  <button type="button" aria-label="Decrease" className="size-9 transition hover:bg-gold/30" onClick={() => setQty(p.id, qty - 1)}>−</button>
-                  <input aria-label={`Quantity in ${p.unit}`} type="number" min={1} value={qty}
-                    onChange={(e) => setQty(p.id, Math.max(1, +e.target.value || 1))}
-                    className="w-14 bg-transparent text-center outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none" />
-                  <button type="button" aria-label="Increase" className="size-9 transition hover:bg-gold/30" onClick={() => setQty(p.id, qty + 1)}>+</button>
+                <button type="button" aria-label={`Remove ${p.name}`} className="grid size-8 place-items-center justify-self-end rounded-full text-xl text-neutral-400 transition hover:scale-110 hover:bg-red-50 hover:text-red-600 sm:order-last" onClick={() => remove(p.id)}>×</button>
+                <div className="col-span-3 flex items-center justify-between gap-3 sm:col-span-1 sm:contents">
+                  <div className="flex items-center overflow-hidden rounded-full border border-[#d9cfb4] sm:order-4">
+                    <button type="button" aria-label="Decrease" className="size-9 transition hover:bg-gold/30" onClick={() => setQty(p.id, qty - 1)}>−</button>
+                    <input aria-label={`Quantity in ${p.unit}`} type="number" min={1} value={qty}
+                      onChange={(e) => setQty(p.id, Math.max(1, +e.target.value || 1))}
+                      className="w-14 bg-transparent text-center outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none" />
+                    <button type="button" aria-label="Increase" className="size-9 transition hover:bg-gold/30" onClick={() => setQty(p.id, qty + 1)}>+</button>
+                  </div>
+                  <p className="min-w-20 text-right font-bold text-brand2 sm:order-5">{inr(qty * p.price!)}</p>
                 </div>
-                <p className="w-24 text-right font-bold text-brand2">{inr(qty * p.price!)}</p>
-                <button type="button" aria-label={`Remove ${p.name}`} className="text-xl text-neutral-400 transition hover:scale-125 hover:text-red-600" onClick={() => remove(p.id)}>×</button>
               </li>
             ))}
           </ul>
@@ -122,7 +124,7 @@ export default function CheckoutView() {
           <div className="grid gap-3">
             {PAY.map((p) => (
               <label key={p.id} className={`flex cursor-pointer items-center gap-3 rounded-2xl border-2 p-4 transition-all duration-300 ${pay === p.id ? "border-brand bg-brand/5" : "border-[#ddd3b8] hover:border-gold"}`}>
-                <input type="radio" name="pay" checked={pay === p.id} onChange={() => setPay(p.id)} className="size-4 accent-[#27500a]" />
+                <input type="radio" name="pay" checked={pay === p.id} onChange={() => setPay(p.id)} className="size-4 accent-brand2" />
                 <span><strong className="block text-sm">{p.label}</strong><span className="text-xs text-neutral-500">{p.hint}</span></span>
               </label>
             ))}
@@ -140,7 +142,7 @@ export default function CheckoutView() {
         <div className="flex justify-between border-t border-white/20 pt-4 font-serif text-2xl">
           <span>Total</span><span className="text-gold">{inr(total)}</span>
         </div>
-        <button className="btn btn-gold btn-block !py-4 text-base" type="submit">Place order</button>
+        <button className="btn btn-gold btn-block py-4! text-base" type="submit">Place order</button>
         <p className="text-xs leading-relaxed opacity-75">Your order is sent to our team on WhatsApp. We confirm stock, final price and delivery before any payment is taken.</p>
       </aside>
     </form>
