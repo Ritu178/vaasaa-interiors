@@ -28,7 +28,10 @@ export default function Home() {
             <p className="mt-4 animate-fade-up text-sm opacity-70 [animation-delay:480ms]">{BRAND.sub}</p>
           </div>
           <div className="relative animate-fade-up [animation-delay:300ms]">
-                        <div className="relative h-80 animate-bob overflow-hidden rounded-[2rem] shadow-2xl shadow-brand/30 md:h-[30rem]">
+            <svg className="pointer-events-none absolute -inset-3 z-10" style={{ width: "calc(100% + 24px)", height: "calc(100% + 24px)" }} aria-hidden>
+              <rect x="2" y="2" rx="38" className="animate-dash fill-none stroke-gold" strokeWidth="2.5" strokeDasharray="4 10" strokeLinecap="round" style={{ width: "calc(100% - 4px)", height: "calc(100% - 4px)" }} />
+            </svg>
+            <div className="relative h-80 animate-bob overflow-hidden rounded-[2rem] shadow-2xl shadow-brand/30 md:h-[30rem]">
               <Img id={IMG.hero} alt="VaaSaa Interiors showroom" w={1200} />
             </div>
             <div className="absolute -bottom-5 -left-3 rounded-2xl bg-white px-5 py-3 shadow-xl">
