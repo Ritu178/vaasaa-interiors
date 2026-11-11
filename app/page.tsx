@@ -28,7 +28,7 @@ export default function Home() {
             <p className="mt-4 animate-fade-up text-sm opacity-70 [animation-delay:480ms]">{BRAND.sub}</p>
           </div>
           <div className="relative animate-fade-up [animation-delay:300ms]">
-                        <div className="relative h-80 overflow-hidden rounded-[2rem] shadow-2xl shadow-brand/30 md:h-[30rem]">
+                        <div className="relative h-80 animate-bob overflow-hidden rounded-[2rem] shadow-2xl shadow-brand/30 md:h-[30rem]">
               <Img id={IMG.hero} alt="VaaSaa Interiors showroom" w={1200} />
             </div>
             <div className="absolute -bottom-5 -left-3 rounded-2xl bg-white px-5 py-3 shadow-xl">
