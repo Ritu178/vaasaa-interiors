@@ -6,8 +6,8 @@ export const metadata = { title: "Products – VaaSaa Interiors" };
 export default function Products() {
   return (
     <>
-      <PageHero title="Products" sub="Browse our range and enquire on WhatsApp for the best price. Prices shown are indicative." />
-      <section className="section"><div className="container"><ProductGrid /></div></section>
+      <PageHero title="Products" sub="Add items to your cart or enquire on WhatsApp for the best price. Prices shown are indicative." />
+      <section className="section"><div className="container-x"><ProductGrid /></div></section>
     </>
   );
 }

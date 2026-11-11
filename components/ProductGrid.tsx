@@ -1,32 +1,44 @@
 "use client";
 import { useState } from "react";
-import { FILTERS, PRODUCTS, waLink } from "@/lib/data";
+import { FILTERS, PRODUCTS, priceLabel, waLink } from "@/lib/data";
 import Img from "./Img";
+import Reveal from "./Reveal";
+import { useCart } from "./CartProvider";
 
 export default function ProductGrid() {
   const [f, setF] = useState("All");
+  const { add } = useCart();
   const list = f === "All" ? PRODUCTS : PRODUCTS.filter((p) => p.cat === f);
   return (
     <>
-      <div className="pills">
+      <div className="mb-10 flex flex-wrap gap-2.5">
         {FILTERS.map((c) => (
           <button key={c} className={`pill ${f === c ? "on" : ""}`} onClick={() => setF(c)}>{c}</button>
         ))}
       </div>
-      <div className="grid g3">
-        {list.map((p) => (
-          <article key={p.name} className="card product">
-            <div className="thumb"><Img id={p.img} alt={p.name} w={700} /></div>
-            <div className="card-body">
-              <span className="label">{p.cat}</span>
-              <h3>{p.name}</h3>
-              <p className="price">{p.price ?? "Price on request"}</p>
-              <a className="btn btn-green block" target="_blank" rel="noreferrer"
-                href={waLink(`Hello VaaSaa Interiors, I'm interested in "${p.name}". Please share details and price.`)}>
-                Enquire on WhatsApp
-              </a>
-            </div>
-          </article>
+      <div key={f} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {list.map((p, i) => (
+          <div key={p.id} className="animate-fade-up" style={{ animationDelay: `${(i % 6) * 70}ms` }}>
+            <article className="card group h-full">
+              <div className="h-60 overflow-hidden">
+                <Img id={p.img} alt={p.name} w={700} className="transition-transform duration-700 group-hover:scale-110" />
+              </div>
+              <div className="p-5">
+                <span className="label">{p.cat}</span>
+                <h3 className="mt-1 text-xl">{p.name}</h3>
+                <p className="mb-4 mt-1 font-bold text-brand2">{priceLabel(p)}</p>
+                <div className="grid gap-2.5">
+                  {p.price && (
+                    <button className="btn btn-gold btn-block" onClick={() => add(p)}>🛒 Add to cart</button>
+                  )}
+                  <a className="btn btn-green btn-block" target="_blank" rel="noreferrer"
+                    href={waLink(`Hello VaaSaa Interiors, I'm interested in "${p.name}". Please share details and price.`)}>
+                    Enquire on WhatsApp
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
         ))}
       </div>
     </>

@@ -12,20 +12,20 @@ export default function ContactForm() {
     setSent(true);
   }
   return (
-    <form className="card form" onSubmit={submit}>
-      <h2>Get a free quote</h2>
-      <label>Name<input name="name" required placeholder="Your name" /></label>
-      <label>Phone<input name="phone" required type="tel" pattern="[0-9+ ]{10,14}" placeholder="10-digit mobile number" /></label>
-      <label>Product interest
+    <form className="flex flex-col gap-4 rounded-3xl bg-white p-8 shadow-lg" onSubmit={submit}>
+      <h2 className="text-3xl">Get a free quote</h2>
+      <label className="field">Name<input name="name" required placeholder="Your name" /></label>
+      <label className="field">Phone<input name="phone" required type="tel" pattern="[0-9+ ]{10,14}" placeholder="10-digit mobile number" /></label>
+      <label className="field">Product interest
         <select name="product" required defaultValue="">
           <option value="" disabled>Select a product</option>
           {FILTERS.slice(1).map((f) => <option key={f}>{f}</option>)}
           <option>Other</option>
         </select>
       </label>
-      <label>Message<textarea name="message" rows={4} placeholder="Tell us about your space" /></label>
-      <button className="btn btn-green block" type="submit">Request quote</button>
-      {sent && <p className="ok">Thanks! Your enquiry opened in WhatsApp – just press send.</p>}
+      <label className="field">Message<textarea name="message" rows={4} placeholder="Tell us about your space" /></label>
+      <button className="btn btn-green btn-block" type="submit">Request quote</button>
+      {sent && <p className="animate-fade-up font-semibold text-brand2">Thanks! Your enquiry opened in WhatsApp – just press send.</p>}
     </form>
   );
 }

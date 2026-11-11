@@ -10,41 +10,47 @@ export default function GalleryTabs() {
   const [tab, setTab] = useState(TABS[0]);
   return (
     <>
-      <div className="pills center">
+      <div className="mb-10 flex flex-wrap justify-center gap-2.5">
         {TABS.map((t) => <button key={t} className={`pill ${tab === t ? "on" : ""}`} onClick={() => setTab(t)}>{t}</button>)}
       </div>
 
-      {tab === "Photos" && (
-        <div className="masonry">
-          {GALLERY.map((g) => (
-            <figure key={g.cap} className="m-item">
-              <div style={{ height: g.h }}><Img id={g.src} alt={g.cap} w={800} /></div>
-              <figcaption>{g.cap}</figcaption>
-            </figure>
-          ))}
-        </div>
-      )}
+      <div key={tab} className="animate-fade-up">
+        {tab === "Photos" && (
+          <div className="columns-1 gap-5 sm:columns-2 lg:columns-3">
+            {GALLERY.map((g) => (
+              <figure key={g.cap} className="group mb-5 break-inside-avoid overflow-hidden rounded-3xl bg-white shadow-md transition duration-500 hover:-translate-y-1 hover:shadow-2xl">
+                <div className="overflow-hidden" style={{ height: g.h }}>
+                  <Img id={g.src} alt={g.cap} w={800} className="transition-transform duration-700 group-hover:scale-110" />
+                </div>
+                <figcaption className="px-4 py-3 text-sm">{g.cap}</figcaption>
+              </figure>
+            ))}
+          </div>
+        )}
 
-      {tab === "Reels" && (
-        <div className="grid g4">
-          {REELS.map((r) => (
-            <a key={r.cap} href={BRAND.instagramUrl} target="_blank" rel="noreferrer" className="reel">
-              <Img id={r.src} alt={r.cap} w={600} />
-              <span className="play">▶</span>
-              <em>{r.cap}</em>
-            </a>
-          ))}
-        </div>
-      )}
+        {tab === "Reels" && (
+          <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
+            {REELS.map((r) => (
+              <a key={r.cap} href={BRAND.instagramUrl} target="_blank" rel="noreferrer" className="group relative block aspect-[9/14] overflow-hidden rounded-3xl transition duration-500 hover:-translate-y-1.5 hover:shadow-2xl">
+                <Img id={r.src} alt={r.cap} w={600} className="transition-transform duration-700 group-hover:scale-110" />
+                <span className="absolute left-1/2 top-1/2 grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/85 text-brand transition group-hover:scale-125">▶</span>
+                <em className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 pt-8 text-sm not-italic text-white">{r.cap}</em>
+              </a>
+            ))}
+          </div>
+        )}
 
-      {tab === "Before and after" && (
-        <div className="grid g2">
-          <BeforeAfter before={IMG.living} after={IMG.living} label="Living room, UV marble wall" />
-          <BeforeAfter before={IMG.garden} after={IMG.garden} label="Terrace garden, artificial grass" />
-        </div>
-      )}
+        {tab === "Before and after" && (
+          <div className="grid gap-8 md:grid-cols-2">
+            <BeforeAfter before={IMG.living} after={IMG.living} label="Living room, UV marble wall" />
+            <BeforeAfter before={IMG.garden} after={IMG.garden} label="Terrace garden, artificial grass" />
+          </div>
+        )}
+      </div>
 
-      <div className="center mt"><a className="btn btn-gold" href={BRAND.instagramUrl} target="_blank" rel="noreferrer">See more on Instagram</a></div>
+      <div className="mt-10 text-center">
+        <a className="btn btn-gold" href={BRAND.instagramUrl} target="_blank" rel="noreferrer">See more on Instagram</a>
+      </div>
     </>
   );
 }

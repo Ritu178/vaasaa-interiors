@@ -1,114 +1,161 @@
 import Link from "next/link";
 import Img from "@/components/Img";
+import Reveal from "@/components/Reveal";
 import { BRAND, CATEGORIES, IMG, OFFERS, REELS, REVIEWS, WHY } from "@/lib/data";
+
+const MARQUEE = ["PVC panels", "WPC panels", "Charcoal louvers", "UV marble sheets", "7D UV sheets", "PU stones", "Wallpapers", "Sofa fabric", "French molding", "Artificial planters", "Vertical gardens", "Artificial grass", "Curtains", "Roman blinds"];
 
 export default function Home() {
   return (
     <>
-      <section className="hero">
-        <div className="container hero-in">
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-cream via-cream to-cream2 pb-20 pt-14">
+        <div className="absolute -left-24 top-10 size-80 animate-float rounded-full bg-gold/25 blur-3xl" />
+        <div className="absolute -right-20 bottom-0 size-96 animate-float-slow rounded-full bg-brand2/20 blur-3xl" />
+        <div className="container-x relative grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
           <div>
-            <span className="eyebrow">{BRAND.tagline}</span>
-            <h1>Premium interior materials, all under one roof in Amritsar</h1>
-            <p>From fluted panels and UV marble to wallpapers, fabrics and artificial grass – everything to finish your dream home, with installation and design advice from our team.</p>
-            <div className="btn-row">
+            <span className="inline-block animate-fade-up text-xs font-semibold uppercase tracking-[0.25em] text-gold">{BRAND.tagline}</span>
+            <h1 className="mb-5 mt-4 animate-fade-up text-4xl [animation-delay:120ms] md:text-6xl">
+              Premium interior materials, all under one roof in <span className="bg-gradient-to-r from-brand2 via-gold to-brand2 bg-[length:200%_auto] bg-clip-text text-transparent animate-gradient">Amritsar</span>
+            </h1>
+            <p className="max-w-lg animate-fade-up text-lg text-neutral-700 [animation-delay:240ms]">
+              From fluted panels and UV marble to wallpapers, fabrics and artificial grass – everything to finish your dream home, with installation and design advice from our team.
+            </p>
+            <div className="mt-8 flex animate-fade-up flex-wrap gap-4 [animation-delay:360ms]">
               <Link href="/products" className="btn btn-gold">Explore products</Link>
               <Link href="/contact" className="btn btn-outline">Visit showroom</Link>
             </div>
-            <p className="muted-sm">{BRAND.sub}</p>
+            <p className="mt-4 animate-fade-up text-sm opacity-70 [animation-delay:480ms]">{BRAND.sub}</p>
           </div>
-          <div className="hero-img"><Img id={IMG.hero} alt="VaaSaa Interiors showroom" w={1200} /></div>
+          <div className="relative animate-fade-up [animation-delay:300ms]">
+            <div className="absolute -inset-4 animate-spin-slow rounded-[2.5rem] border-2 border-dashed border-gold/60" />
+            <div className="relative h-80 animate-float overflow-hidden rounded-[2rem] shadow-2xl shadow-brand/30 md:h-[30rem]">
+              <Img id={IMG.hero} alt="VaaSaa Interiors showroom" w={1200} />
+            </div>
+            <div className="absolute -bottom-5 -left-3 animate-float-slow rounded-2xl bg-white px-5 py-3 shadow-xl">
+              <p className="text-xs text-neutral-500">Wallpaper from</p>
+              <p className="font-serif text-2xl text-brand2">₹199</p>
+            </div>
+          </div>
         </div>
       </section>
 
+      {/* MARQUEE */}
+      <div className="overflow-hidden bg-brand py-4 text-gold">
+        <div className="flex w-max animate-marquee gap-10 whitespace-nowrap font-serif text-lg">
+          {[...MARQUEE, ...MARQUEE].map((m, i) => <span key={i} className="flex items-center gap-10">{m}<span className="text-white/40">✦</span></span>)}
+        </div>
+      </div>
+
+      {/* CATEGORIES */}
       <section className="section">
-        <div className="container">
-          <h2 className="title">Shop by category</h2>
-          <div className="grid g4">
-            {CATEGORIES.map((c) => (
-              <Link key={c.name} href="/products" className="cat">
-                <Img id={c.img} alt={c.name} w={600} />
-                <span>{c.name}</span>
-              </Link>
+        <div className="container-x">
+          <Reveal><h2 className="title">Shop by category</h2></Reveal>
+          <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
+            {CATEGORIES.map((c, i) => (
+              <Reveal key={c.name} delay={(i % 4) * 90}>
+                <Link href="/products" className="group relative block h-56 overflow-hidden rounded-3xl shadow-md transition duration-500 hover:-translate-y-2 hover:shadow-2xl md:h-64">
+                  <Img id={c.img} alt={c.name} w={600} className="transition-transform duration-700 group-hover:scale-110" />
+                  <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand/90 to-transparent p-4 pt-12 font-serif text-lg text-white">
+                    {c.name}<span className="ml-2 inline-block opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">→</span>
+                  </span>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section green">
-        <div className="container">
-          <h2 className="title light">Current offers</h2>
-          <div className="grid g3">
-            {OFFERS.map((o) => (
-              <div key={o.title} className="offer-mini">
-                <span>{o.title}</span>
-                <strong>{o.price}</strong>
-              </div>
+      {/* OFFERS */}
+      <section className="relative overflow-hidden bg-brand py-16 text-white">
+        <div className="absolute -right-10 top-0 size-72 animate-float rounded-full bg-gold/15 blur-3xl" />
+        <div className="container-x relative">
+          <Reveal><h2 className="title light">Current offers</h2></Reveal>
+          <div className="grid gap-6 md:grid-cols-3">
+            {OFFERS.map((o, i) => (
+              <Reveal key={o.title} delay={i * 120}>
+                <div className="group rounded-3xl border border-gold/50 bg-white/5 p-8 text-center backdrop-blur transition duration-500 hover:-translate-y-2 hover:bg-white/15">
+                  <span className="block opacity-85">{o.title}</span>
+                  <strong className="font-serif text-3xl text-gold transition-transform duration-500 group-hover:scale-110 inline-block">{o.price}</strong>
+                </div>
+              </Reveal>
             ))}
           </div>
-          <div className="center mt"><Link href="/offers" className="btn btn-gold">See all offers</Link></div>
+          <div className="mt-10 text-center"><Link href="/offers" className="btn btn-gold">See all offers</Link></div>
         </div>
       </section>
 
+      {/* FEATURED WORK */}
       <section className="section">
-        <div className="container">
-          <h2 className="title">Featured work</h2>
-          <div className="grid g4">
-            {REELS.map((r) => (
-              <a key={r.cap} href={BRAND.instagramUrl} target="_blank" rel="noreferrer" className="reel">
-                <Img id={r.src} alt={r.cap} w={600} />
-                <span className="play">▶</span>
-                <em>{r.cap}</em>
-              </a>
+        <div className="container-x">
+          <Reveal><h2 className="title">Featured work</h2></Reveal>
+          <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
+            {REELS.map((r, i) => (
+              <Reveal key={r.cap} delay={i * 90}>
+                <a href={BRAND.instagramUrl} target="_blank" rel="noreferrer" className="group relative block aspect-[9/14] overflow-hidden rounded-3xl transition duration-500 hover:-translate-y-2 hover:shadow-2xl">
+                  <Img id={r.src} alt={r.cap} w={600} className="transition-transform duration-700 group-hover:scale-110" />
+                  <span className="absolute left-1/2 top-1/2 grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/85 text-brand transition duration-300 group-hover:scale-125">▶</span>
+                  <em className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 pt-10 text-sm not-italic text-white">{r.cap}</em>
+                </a>
+              </Reveal>
             ))}
           </div>
-          <div className="center mt"><a href={BRAND.instagramUrl} target="_blank" rel="noreferrer" className="btn btn-green">Follow @{BRAND.instagram}</a></div>
+          <div className="mt-10 text-center"><a href={BRAND.instagramUrl} target="_blank" rel="noreferrer" className="btn btn-green">Follow @{BRAND.instagram}</a></div>
         </div>
       </section>
 
-      <section className="section cream2">
-        <div className="container">
-          <h2 className="title">Why choose us</h2>
-          <div className="grid g4">
-            {WHY.map((w) => (
-              <div key={w.title} className="card pad center-t">
-                <div className="icon">{w.icon}</div>
-                <h3>{w.title}</h3>
-                <p>{w.text}</p>
-              </div>
+      {/* WHY */}
+      <section className="section bg-cream2">
+        <div className="container-x">
+          <Reveal><h2 className="title">Why choose us</h2></Reveal>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {WHY.map((w, i) => (
+              <Reveal key={w.title} delay={i * 100}>
+                <div className="card group h-full p-7 text-center">
+                  <div className="mb-3 inline-block text-4xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-12 group-hover:scale-125">{w.icon}</div>
+                  <h3 className="mb-2 text-xl">{w.title}</h3>
+                  <p className="text-neutral-600">{w.text}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
+      {/* REVIEWS */}
       <section className="section">
-        <div className="container">
-          <h2 className="title">What our customers say</h2>
-          <div className="grid g3">
-            {REVIEWS.map((r) => (
-              <blockquote key={r.name} className="card pad quote">
-                <div className="stars">★★★★★</div>
-                <p>“{r.text}”</p>
-                <footer><strong>{r.name}</strong> · {r.place}</footer>
-              </blockquote>
+        <div className="container-x">
+          <Reveal><h2 className="title">What our customers say</h2></Reveal>
+          <div className="grid gap-6 md:grid-cols-3">
+            {REVIEWS.map((r, i) => (
+              <Reveal key={r.name} delay={i * 120}>
+                <blockquote className="card h-full p-7">
+                  <div className="mb-3 tracking-[3px] text-gold">★★★★★</div>
+                  <p>“{r.text}”</p>
+                  <footer className="mt-4 text-sm text-neutral-500"><strong className="text-brand">{r.name}</strong> · {r.place}</footer>
+                </blockquote>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section cream2">
-        <div className="container grid g2 visit">
-          <div>
+      {/* VISIT */}
+      <section className="section bg-cream2">
+        <div className="container-x grid items-center gap-10 md:grid-cols-2">
+          <Reveal>
             <h2 className="title left">Visit us</h2>
-            <p><strong>Address:</strong> {BRAND.address}</p>
-            <p><strong>Phone:</strong> <a href={`tel:${BRAND.phone}`}>{BRAND.phone}</a></p>
-            <p><strong>Timings:</strong> {BRAND.timings}</p>
-            <div className="btn-row">
+            <p className="mb-3"><strong>Address:</strong> {BRAND.address}</p>
+            <p className="mb-3"><strong>Phone:</strong> <a href={`tel:${BRAND.phone}`} className="underline decoration-gold">{BRAND.phone}</a></p>
+            <p className="mb-3"><strong>Timings:</strong> {BRAND.timings}</p>
+            <div className="mt-6 flex flex-wrap gap-4">
               <a className="btn btn-green" href={`tel:${BRAND.phone}`}>Call now</a>
               <Link className="btn btn-gold" href="/contact">Get a free quote</Link>
             </div>
-          </div>
-          <iframe className="map" src={BRAND.map} loading="lazy" title="VaaSaa Interiors location" />
+          </Reveal>
+          <Reveal delay={150}>
+            <iframe className="h-[340px] w-full rounded-3xl border-0 shadow-xl" src={BRAND.map} loading="lazy" title="VaaSaa Interiors location" />
+          </Reveal>
         </div>
       </section>
     </>

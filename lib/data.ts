@@ -15,6 +15,8 @@ export const BRAND = {
 export const waLink = (text: string) =>
   `https://wa.me/${BRAND.wa}?text=${encodeURIComponent(text)}`;
 
+export const inr = (n: number) => "₹" + n.toLocaleString("en-IN");
+
 const u = (id: string, w = 900) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=70`;
 export const img = u;
@@ -61,28 +63,45 @@ export const FILTERS = [
   "Curtains and blinds",
 ];
 
-export type Product = { name: string; cat: string; price: string | null; img: string };
+/**
+ * price: number  -> can be added to cart (unit = what the price is per)
+ * price: undefined -> enquiry only ("Price on request" or priceText)
+ * NOTE: prices are placeholders – update with real ones.
+ */
+export type Product = {
+  id: string;
+  name: string;
+  cat: string;
+  img: string;
+  price?: number;
+  unit?: string;
+  from?: boolean;
+  priceText?: string;
+};
 
 export const PRODUCTS: Product[] = [
-  { name: "Fluted WPC Wall Panel", cat: "PVC and WPC panels", price: "₹95 / sq ft", img: IMG.living2 },
-  { name: "PVC Wall Panel – Wood Finish", cat: "PVC and WPC panels", price: "₹70 / sq ft", img: IMG.living3 },
-  { name: "Charcoal Louver Panel", cat: "PVC and WPC panels", price: "₹185 / sq ft", img: IMG.interior3 },
-  { name: "UV Marble Sheet – Carrara", cat: "UV marble sheets", price: "₹1,799 / sheet", img: IMG.hero },
-  { name: "7D UV Marble Sheet", cat: "UV marble sheets", price: "Up to ₹2,499", img: IMG.living },
-  { name: "UV Marble Sheet – Gold Vein", cat: "UV marble sheets", price: null, img: IMG.interior1 },
-  { name: "Designer Wallpaper Roll", cat: "Wallpapers", price: "From ₹199", img: IMG.wall },
-  { name: "Textured 3D Wallpaper", cat: "Wallpapers", price: "₹449 / roll", img: IMG.bed2 },
-  { name: "Premium Velvet Sofa Fabric", cat: "Sofa fabric", price: "₹550 / metre", img: IMG.sofa },
-  { name: "Chenille Upholstery Fabric", cat: "Sofa fabric", price: null, img: IMG.chair },
-  { name: "Artificial Grass", cat: "Planters and grass", price: "From ₹25 / sq ft", img: IMG.garden },
-  { name: "Vertical Garden Panel", cat: "Planters and grass", price: "₹399 / panel", img: IMG.apt },
-  { name: "Artificial Planter Set", cat: "Planters and grass", price: "₹899", img: IMG.kitchen },
-  { name: "French Molding – Classic", cat: "French molding", price: "₹120 / ft", img: IMG.interior2 },
-  { name: "French Molding – Gold Trim", cat: "French molding", price: null, img: IMG.interior1 },
-  { name: "PU Stone Wall Cladding", cat: "PU stones", price: "₹210 / sq ft", img: IMG.house },
-  { name: "Sheer & Blackout Curtains", cat: "Curtains and blinds", price: null, img: IMG.bedroom },
-  { name: "Roman Blinds", cat: "Curtains and blinds", price: "From ₹650 / sq ft", img: IMG.bed2 },
+  { id: "wpc-fluted", name: "Fluted WPC Wall Panel", cat: "PVC and WPC panels", price: 95, unit: "sq ft", img: IMG.living2 },
+  { id: "pvc-wood", name: "PVC Wall Panel – Wood Finish", cat: "PVC and WPC panels", price: 70, unit: "sq ft", img: IMG.living3 },
+  { id: "charcoal-louver", name: "Charcoal Louver Panel", cat: "PVC and WPC panels", price: 185, unit: "sq ft", img: IMG.interior3 },
+  { id: "uv-carrara", name: "UV Marble Sheet – Carrara", cat: "UV marble sheets", price: 1799, unit: "sheet", img: IMG.hero },
+  { id: "uv-7d", name: "7D UV Marble Sheet", cat: "UV marble sheets", priceText: "Up to ₹2,499", img: IMG.living },
+  { id: "uv-gold", name: "UV Marble Sheet – Gold Vein", cat: "UV marble sheets", img: IMG.interior1 },
+  { id: "wallpaper-designer", name: "Designer Wallpaper Roll", cat: "Wallpapers", price: 199, unit: "roll", from: true, img: IMG.wall },
+  { id: "wallpaper-3d", name: "Textured 3D Wallpaper", cat: "Wallpapers", price: 449, unit: "roll", img: IMG.bed2 },
+  { id: "fabric-velvet", name: "Premium Velvet Sofa Fabric", cat: "Sofa fabric", price: 550, unit: "metre", img: IMG.sofa },
+  { id: "fabric-chenille", name: "Chenille Upholstery Fabric", cat: "Sofa fabric", img: IMG.chair },
+  { id: "grass", name: "Artificial Grass", cat: "Planters and grass", price: 25, unit: "sq ft", from: true, img: IMG.garden },
+  { id: "vertical-garden", name: "Vertical Garden Panel", cat: "Planters and grass", price: 399, unit: "panel", img: IMG.apt },
+  { id: "planter-set", name: "Artificial Planter Set", cat: "Planters and grass", price: 899, unit: "set", img: IMG.kitchen },
+  { id: "molding-classic", name: "French Molding – Classic", cat: "French molding", price: 120, unit: "ft", img: IMG.interior2 },
+  { id: "molding-gold", name: "French Molding – Gold Trim", cat: "French molding", img: IMG.interior1 },
+  { id: "pu-stone", name: "PU Stone Wall Cladding", cat: "PU stones", price: 210, unit: "sq ft", img: IMG.house },
+  { id: "curtains", name: "Sheer & Blackout Curtains", cat: "Curtains and blinds", img: IMG.bedroom },
+  { id: "roman-blinds", name: "Roman Blinds", cat: "Curtains and blinds", price: 650, unit: "sq ft", from: true, img: IMG.bed2 },
 ];
+
+export const priceLabel = (p: Product) =>
+  p.priceText ?? (p.price ? `${p.from ? "From " : ""}${inr(p.price)} / ${p.unit}` : "Price on request");
 
 export const OFFERS = [
   { title: "Wallpaper", price: "From ₹199", desc: "Hundreds of designs – florals, textures, geometrics and kids' themes.", valid: "Valid till 31 Dec 2026", img: IMG.wall },
