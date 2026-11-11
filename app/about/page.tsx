@@ -1,28 +1,32 @@
 import PageHero from "@/components/PageHero";
 import Img from "@/components/Img";
 import Reveal from "@/components/Reveal";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbJsonLd, pageMeta } from "@/lib/seo";
 import { IMG, REVIEWS, WHY } from "@/lib/data";
 
-export const metadata = { title: "About – VaaSaa Interiors" };
+export const metadata = pageMeta("About Us – Our Story & Mission", "Learn about VaaSaa Interiors, an Amritsar showroom bringing panels, stones, fabrics, wallpapers and greenery under one roof with honest advice, fair prices and careful installation.", "/about", "About");
 
 export default function About() {
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd("About", "/about")} />
       <PageHero title="About us" sub="Spaces | Style | You" />
       <section className="section">
         <div className="container-x grid items-center gap-12 md:grid-cols-2">
-          <Reveal>
+          <div className="animate-slide-left">
             <div className="relative">
-              <div className="absolute -inset-3 -rotate-3 rounded-[2rem] bg-gold/30" />
+              <div className="absolute -inset-3 -rotate-3 animate-float-slow rounded-[2rem] bg-gold/30" />
+              <div className="absolute -bottom-6 -right-6 size-24 animate-spin-slow rounded-full border-2 border-dashed border-brand2/50" />
               <div className="relative h-[28rem] overflow-hidden rounded-[2rem] shadow-2xl"><Img id={IMG.apt} alt="Founder of VaaSaa Interiors (placeholder photo)" w={900} /></div>
             </div>
-          </Reveal>
-          <Reveal delay={150}>
+          </div>
+          <div className="animate-slide-right">
             <h2 className="title left">Our story</h2>
             <p className="mb-4">VaaSaa Interiors began with a simple idea: good interior materials should be easy to find, fairly priced and properly installed. Based on Majitha Road, Amritsar, we bring together panels, stones, fabrics, wallpapers and greenery under one roof.</p>
             <p className="mb-4">Every home is different, so we sit with you, understand your space and suggest what will actually work – not just what is in stock.</p>
             <blockquote className="mt-6 rounded-r-2xl border-l-4 border-gold bg-white p-5 shadow"><strong>Our mission:</strong> to make beautiful, lasting interiors accessible to every family in Punjab – with honest advice, fair prices and careful work.</blockquote>
-          </Reveal>
+          </div>
         </div>
       </section>
 

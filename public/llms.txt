@@ -1,0 +1,30 @@
+# VaaSaa Interiors
+
+> Premium home interior materials showroom in Amritsar, Punjab, India. Tagline: "Beautiful Spaces • Better Living" ("Spaces | Style | You").
+
+VaaSaa Interiors sells and installs interior finishing materials under one roof, with free design advice and installation by its own team.
+
+## Business details
+- Address: 36 Himmat Singh Avenue, Majitha Road, Amritsar, Punjab, India
+- Phone / WhatsApp: +91 82890 31319 (https://wa.me/918289031319)
+- Instagram: https://www.instagram.com/vaasaainterior/
+- Website: https://vaasaa-interiors.vercel.app
+
+## Products
+PVC panels, WPC panels, charcoal louvers, UV marble sheets (including 7D UV sheets), PU stones, wallpapers, sofa fabric, French molding, artificial planters, vertical garden panels, artificial grass, curtains and Roman blinds.
+
+## Current offers
+- Wallpaper from ₹199
+- Artificial grass from ₹25 per sq ft
+- 7D UV sheets up to ₹2,499
+
+## Pages
+- [Home](https://vaasaa-interiors.vercel.app/): overview, categories, offers, reviews, location
+- [Products](https://vaasaa-interiors.vercel.app/products): full range, filter by category, enquire or add to cart
+- [Gallery](https://vaasaa-interiors.vercel.app/gallery): project photos, reels, before/after
+- [Offers](https://vaasaa-interiors.vercel.app/offers): current deals
+- [About](https://vaasaa-interiors.vercel.app/about): story and mission
+- [Contact](https://vaasaa-interiors.vercel.app/contact): free quote form, map, phone, WhatsApp
+
+## How to reach / order
+Enquiries and orders are handled on WhatsApp (+91 82890 31319) or by calling the showroom.

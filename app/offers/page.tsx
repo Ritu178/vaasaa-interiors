@@ -1,13 +1,16 @@
 import PageHero from "@/components/PageHero";
 import Img from "@/components/Img";
 import Reveal from "@/components/Reveal";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbJsonLd, pageMeta } from "@/lib/seo";
 import { OFFERS, waLink } from "@/lib/data";
 
-export const metadata = { title: "Offers – VaaSaa Interiors" };
+export const metadata = pageMeta("Offers – Wallpaper from ₹199, Artificial Grass from ₹25/sq ft", "Current VaaSaa Interiors offers in Amritsar: wallpaper from ₹199, artificial grass from ₹25 per sq ft and 7D UV sheets up to ₹2,499. Claim on WhatsApp.", "/offers", "Offers");
 
 export default function Offers() {
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd("Offers", "/offers")} />
       <PageHero title="Offers" sub="Limited-period deals on our most-loved materials." />
       <section className="section">
         <div className="container-x">
@@ -17,7 +20,7 @@ export default function Offers() {
                 <article className="card group h-full">
                   <div className="relative h-56 overflow-hidden">
                     <Img id={o.img} alt={o.title} w={700} className="transition-transform duration-700 group-hover:scale-110" />
-                    <span className="absolute left-3 top-3 animate-pop rounded-full bg-gold px-3 py-1 text-xs font-bold text-brand">HOT DEAL</span>
+                    <span className="absolute left-3 top-3 animate-wiggle rounded-full bg-gold px-3 py-1 text-xs font-bold text-brand">HOT DEAL</span>
                   </div>
                   <div className="p-6">
                     <span className="label">{o.valid}</span>

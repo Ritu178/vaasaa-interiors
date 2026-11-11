@@ -12,7 +12,7 @@ export default function ContactForm() {
     setSent(true);
   }
   return (
-    <form className="flex flex-col gap-4 rounded-3xl bg-white p-8 shadow-lg" onSubmit={submit}>
+    <form className="flex flex-col gap-4 rounded-3xl bg-white p-8 shadow-lg transition duration-500 hover:shadow-2xl [&>label]:animate-fade-up [&>label:nth-of-type(1)]:[animation-delay:100ms] [&>label:nth-of-type(2)]:[animation-delay:200ms] [&>label:nth-of-type(3)]:[animation-delay:300ms] [&>label:nth-of-type(4)]:[animation-delay:400ms]" onSubmit={submit}>
       <h2 className="text-3xl">Get a free quote</h2>
       <label className="field">Name<input name="name" required placeholder="Your name" /></label>
       <label className="field">Phone<input name="phone" required type="tel" pattern="[0-9+ ]{10,14}" placeholder="10-digit mobile number" /></label>

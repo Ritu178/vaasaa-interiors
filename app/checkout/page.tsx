@@ -1,7 +1,7 @@
 import PageHero from "@/components/PageHero";
 import CheckoutView from "@/components/CheckoutView";
 
-export const metadata = { title: "Checkout – VaaSaa Interiors" };
+export const metadata = { title: "Checkout", robots: { index: false, follow: false } };
 
 export default function Checkout() {
   return (

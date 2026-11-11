@@ -12,8 +12,8 @@ export default function ProductGrid() {
   return (
     <>
       <div className="mb-10 flex flex-wrap gap-2.5">
-        {FILTERS.map((c) => (
-          <button key={c} className={`pill ${f === c ? "on" : ""}`} onClick={() => setF(c)}>{c}</button>
+        {FILTERS.map((c, i) => (
+          <button key={c} style={{ animationDelay: `${i * 60}ms` }} className={`pill animate-zoom-in ${f === c ? "on" : ""}`} onClick={() => setF(c)}>{c}</button>
         ))}
       </div>
       <div key={f} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -29,7 +29,7 @@ export default function ProductGrid() {
                 <p className="mb-4 mt-1 font-bold text-brand2">{priceLabel(p)}</p>
                 <div className="grid gap-2.5">
                   {p.price && (
-                    <button className="btn btn-gold btn-block" onClick={() => add(p)}>🛒 Add to cart</button>
+                    <button className="btn btn-gold btn-block group/cart" onClick={() => add(p)}><span className="inline-block group-hover/cart:animate-wiggle">🛒</span> Add to cart</button>
                   )}
                   <a className="btn btn-green btn-block" target="_blank" rel="noreferrer"
                     href={waLink(`Hello VaaSaa Interiors, I'm interested in "${p.name}". Please share details and price.`)}>

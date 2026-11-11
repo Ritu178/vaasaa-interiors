@@ -20,6 +20,39 @@
   --animate-gradient: gradient 9s ease infinite;
   --animate-toast: toast 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
 
+  --animate-grow: grow 1s 0.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-drift: drift 14s ease-in-out infinite;
+  --animate-wiggle: wiggle 2.5s ease-in-out infinite;
+  --animate-slide-left: slide-left 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-slide-right: slide-right 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-zoom-in: zoom-in 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.1) both;
+
+  @keyframes grow {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+  @keyframes drift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(40px, -20px) scale(1.15); }
+    66% { transform: translate(-30px, 25px) scale(0.9); }
+  }
+  @keyframes wiggle {
+    0%, 85%, 100% { transform: rotate(0); }
+    90% { transform: rotate(-6deg); }
+    95% { transform: rotate(6deg); }
+  }
+  @keyframes slide-left {
+    from { opacity: 0; transform: translateX(-60px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes slide-right {
+    from { opacity: 0; transform: translateX(60px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes zoom-in {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
   @keyframes fade-up {
     from { opacity: 0; transform: translateY(32px); }
     to { opacity: 1; transform: translateY(0); }
