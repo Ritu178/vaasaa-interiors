@@ -7,8 +7,7 @@ export const BRAND = {
   wa: "918289031319",
   instagram: "vaasaainterior",
   instagramUrl: "https://www.instagram.com/vaasaainterior/",
-  // NOTE: placeholder timings – update with the real ones
-  timings: "Mon – Sat: 10:00 AM – 8:00 PM · Sun: 11:00 AM – 5:00 PM",
+  timings: "Call or WhatsApp us to confirm showroom timings",
   map: "https://www.google.com/maps?q=36+Himmat+Singh+Avenue,+Majitha+Road,+Amritsar&output=embed",
 };
 
@@ -104,22 +103,16 @@ export const priceLabel = (p: Product) =>
   p.priceText ?? (p.price ? `${p.from ? "From " : ""}${inr(p.price)} / ${p.unit}` : "Price on request");
 
 export const OFFERS = [
-  { title: "Wallpaper", price: "From ₹199", desc: "Hundreds of designs – florals, textures, geometrics and kids' themes.", valid: "Valid till 31 Dec 2026", img: IMG.wall },
-  { title: "Artificial Grass", price: "From ₹25 / sq ft", desc: "Soft, UV-resistant turf for terraces, balconies and lawns.", valid: "Valid till 31 Dec 2026", img: IMG.garden },
-  { title: "7D UV Sheets", price: "Up to ₹2,499", desc: "Marble-look 7D UV sheets with a deep glossy finish.", valid: "Valid till 30 Nov 2026", img: IMG.hero },
+  { title: "Wallpaper", price: "From ₹199", desc: "A wide range of designs and textures to refresh any wall.", valid: "Limited-period offer", img: IMG.wall },
+  { title: "Artificial Grass", price: "From ₹25 / sq ft", desc: "Soft, UV-resistant turf for terraces, balconies and lawns.", valid: "Limited-period offer", img: IMG.garden },
+  { title: "7D UV Sheets", price: "Up to ₹2,499", desc: "Marble-look 7D UV sheets with a deep glossy finish.", valid: "Limited-period offer", img: IMG.hero },
 ];
 
 export const WHY = [
-  { icon: "🏬", title: "One-stop store", text: "Panels, stones, fabrics, grass and more – everything under one roof." },
-  { icon: "🛠️", title: "Installation by our team", text: "Trained fitters handle the job neatly so you don't have to chase anyone." },
-  { icon: "💰", title: "Fair prices", text: "Transparent pricing with no hidden costs – honest quotes every time." },
-  { icon: "🎨", title: "Free design advice", text: "Walk in with a room, walk out with a plan – at no charge." },
-];
-
-export const REVIEWS = [
-  { name: "Harpreet Kaur", place: "Majitha Road", text: "The UV marble wall in our living room looks stunning. Team installed it in a single day." },
-  { name: "Gurpreet Singh", place: "Ranjit Avenue", text: "Best prices for WPC panels in Amritsar, and the advice on colours was really helpful." },
-  { name: "Simran Arora", place: "Lawrence Road", text: "Got our terrace done with artificial grass and planters. Looks like a mini garden!" },
+  { icon: "store", title: "One-stop store", text: "Panels, stones, fabrics, grass and more – everything under one roof." },
+  { icon: "tools", title: "Installation by our team", text: "Trained fitters handle the job neatly so you don't have to chase anyone." },
+  { icon: "tag", title: "Fair prices", text: "Transparent pricing with no hidden costs – honest quotes every time." },
+  { icon: "palette", title: "Free design advice", text: "Walk in with a room, walk out with a plan – at no charge." },
 ];
 
 export const GALLERY = [

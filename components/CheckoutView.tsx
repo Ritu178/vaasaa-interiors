@@ -4,6 +4,7 @@ import { useState } from "react";
 import { BRAND, inr, waLink } from "@/lib/data";
 import { useCart } from "./CartProvider";
 import Img from "./Img";
+import Icon from "./Icon";
 
 const PAY = [
   { id: "cod", label: "Cash on delivery", hint: "Pay when materials arrive" },
@@ -51,7 +52,7 @@ export default function CheckoutView() {
   if (!lines.length)
     return (
       <div className="mx-auto max-w-md animate-fade-up py-10 text-center">
-        <div className="mb-4 animate-float text-7xl">🛒</div>
+        <div className="mx-auto mb-5 grid size-20 place-items-center rounded-full bg-brand text-gold"><Icon name="cart" className="size-9" /></div>
         <h2 className="text-3xl">Your cart is empty</h2>
         <p className="mb-6 mt-2 text-neutral-600">Browse our products and add what you like.</p>
         <Link href="/products" className="btn btn-gold">Explore products</Link>
@@ -99,9 +100,9 @@ export default function CheckoutView() {
           </div>
 
           <div className="my-6 grid grid-cols-2 gap-3">
-            {([["delivery", "🚚 Home delivery"], ["pickup", "🏬 Showroom pickup"]] as const).map(([k, l]) => (
+            {([["delivery", "Home delivery", "truck"], ["pickup", "Showroom pickup", "store"]] as const).map(([k, l, ic]) => (
               <button type="button" key={k} onClick={() => setMode(k)}
-                className={`rounded-2xl border-2 p-4 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 ${mode === k ? "border-brand bg-brand text-white shadow-lg" : "border-[#ddd3b8] bg-cream"}`}>{l}</button>
+                className={`rounded-2xl border-2 p-4 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 ${mode === k ? "border-brand bg-brand text-white shadow-lg" : "border-[#ddd3b8] bg-cream"}`}><Icon name={ic} className="mx-auto mb-1 size-6" />{l}</button>
             ))}
           </div>
 

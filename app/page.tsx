@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Img from "@/components/Img";
 import Reveal from "@/components/Reveal";
-import { BRAND, CATEGORIES, IMG, OFFERS, REELS, REVIEWS, WHY } from "@/lib/data";
+import Icon from "@/components/Icon";
+import { BRAND, CATEGORIES, IMG, OFFERS, REELS, WHY } from "@/lib/data";
 
 const MARQUEE = ["PVC panels", "WPC panels", "Charcoal louvers", "UV marble sheets", "7D UV sheets", "PU stones", "Wallpapers", "Sofa fabric", "French molding", "Artificial planters", "Vertical gardens", "Artificial grass", "Curtains", "Roman blinds"];
 
@@ -10,13 +11,12 @@ export default function Home() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden bg-gradient-to-br from-cream via-cream to-cream2 pb-20 pt-14">
-        <div className="absolute -left-24 top-10 size-80 animate-float rounded-full bg-gold/25 blur-3xl" />
-        <div className="absolute -right-20 bottom-0 size-96 animate-float-slow rounded-full bg-brand2/20 blur-3xl" />
+        <div className="absolute -left-24 top-10 size-80 rounded-full bg-gold/20 blur-3xl" />
         <div className="container-x relative grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
           <div>
             <span className="inline-block animate-fade-up text-xs font-semibold uppercase tracking-[0.25em] text-gold">{BRAND.tagline}</span>
             <h1 className="mb-5 mt-4 animate-fade-up text-4xl [animation-delay:120ms] md:text-6xl">
-              Premium interior materials, all under one roof in <span className="bg-gradient-to-r from-brand2 via-gold to-brand2 bg-[length:200%_auto] bg-clip-text text-transparent animate-gradient">Amritsar</span>
+              Premium interior materials, all under one roof in <span className="text-brand2 underline decoration-gold decoration-4 underline-offset-8">Amritsar</span>
             </h1>
             <p className="max-w-lg animate-fade-up text-lg text-neutral-700 [animation-delay:240ms]">
               From fluted panels and UV marble to wallpapers, fabrics and artificial grass – everything to finish your dream home, with installation and design advice from our team.
@@ -28,11 +28,10 @@ export default function Home() {
             <p className="mt-4 animate-fade-up text-sm opacity-70 [animation-delay:480ms]">{BRAND.sub}</p>
           </div>
           <div className="relative animate-fade-up [animation-delay:300ms]">
-            <div className="absolute -inset-4 animate-spin-slow rounded-[2.5rem] border-2 border-dashed border-gold/60" />
-            <div className="relative h-80 animate-float overflow-hidden rounded-[2rem] shadow-2xl shadow-brand/30 md:h-[30rem]">
+                        <div className="relative h-80 overflow-hidden rounded-[2rem] shadow-2xl shadow-brand/30 md:h-[30rem]">
               <Img id={IMG.hero} alt="VaaSaa Interiors showroom" w={1200} />
             </div>
-            <div className="absolute -bottom-5 -left-3 animate-float-slow rounded-2xl bg-white px-5 py-3 shadow-xl">
+            <div className="absolute -bottom-5 -left-3 rounded-2xl bg-white px-5 py-3 shadow-xl">
               <p className="text-xs text-neutral-500">Wallpaper from</p>
               <p className="font-serif text-2xl text-brand2">₹199</p>
             </div>
@@ -68,8 +67,7 @@ export default function Home() {
 
       {/* OFFERS */}
       <section className="relative overflow-hidden bg-brand py-16 text-white">
-        <div className="absolute -right-10 top-0 size-72 animate-float rounded-full bg-gold/15 blur-3xl" />
-        <div className="container-x relative">
+                <div className="container-x relative">
           <Reveal><h2 className="title light">Current offers</h2></Reveal>
           <div className="grid gap-6 md:grid-cols-3">
             {OFFERS.map((o, i) => (
@@ -112,7 +110,7 @@ export default function Home() {
             {WHY.map((w, i) => (
               <Reveal key={w.title} delay={i * 100}>
                 <div className="card group h-full p-7 text-center">
-                  <div className="mb-3 inline-block text-4xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-12 group-hover:scale-125">{w.icon}</div>
+                  <div className="mx-auto mb-4 grid size-14 place-items-center rounded-2xl bg-brand text-gold transition-transform duration-500 group-hover:-translate-y-1"><Icon name={w.icon} className="size-7" /></div>
                   <h3 className="mb-2 text-xl">{w.title}</h3>
                   <p className="text-neutral-600">{w.text}</p>
                 </div>
@@ -122,26 +120,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* REVIEWS */}
-      <section className="section">
-        <div className="container-x">
-          <Reveal><h2 className="title">What our customers say</h2></Reveal>
-          <div className="grid gap-6 md:grid-cols-3">
-            {REVIEWS.map((r, i) => (
-              <Reveal key={r.name} delay={i * 120}>
-                <blockquote className="card h-full p-7">
-                  <div className="mb-3 tracking-[3px] text-gold">★★★★★</div>
-                  <p>“{r.text}”</p>
-                  <footer className="mt-4 text-sm text-neutral-500"><strong className="text-brand">{r.name}</strong> · {r.place}</footer>
-                </blockquote>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* VISIT */}
-      <section className="section bg-cream2">
+      <section className="section">
         <div className="container-x grid items-center gap-10 md:grid-cols-2">
           <Reveal>
             <h2 className="title left">Visit us</h2>

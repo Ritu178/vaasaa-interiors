@@ -20,7 +20,7 @@ export default function Offers() {
                 <article className="card group h-full">
                   <div className="relative h-56 overflow-hidden">
                     <Img id={o.img} alt={o.title} w={700} className="transition-transform duration-700 group-hover:scale-110" />
-                    <span className="absolute left-3 top-3 animate-wiggle rounded-full bg-gold px-3 py-1 text-xs font-bold text-brand">HOT DEAL</span>
+                    <span className="absolute left-3 top-3 rounded-full bg-gold px-3 py-1 text-xs font-bold text-brand">OFFER</span>
                   </div>
                   <div className="p-6">
                     <span className="label">{o.valid}</span>
@@ -38,8 +38,8 @@ export default function Offers() {
           </div>
 
           <Reveal>
-            <div className="relative mt-16 flex flex-wrap items-center justify-between gap-8 overflow-hidden rounded-[2rem] bg-gradient-to-r from-brand via-brand2 to-brand bg-[length:200%_auto] p-10 text-white animate-gradient md:p-14">
-              <div className="absolute -right-10 -top-10 size-52 animate-float rounded-full bg-gold/30 blur-2xl" />
+            <div className="relative mt-16 flex flex-wrap items-center justify-between gap-8 overflow-hidden rounded-[2rem] bg-brand p-10 text-white md:p-14">
+              <div className="absolute -right-10 -top-10 size-52 rounded-full bg-gold/20 blur-2xl" />
               <div className="relative">
                 <span className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">Festive season sale</span>
                 <h2 className="my-2 text-3xl text-white md:text-4xl">Make your home shine this season</h2>

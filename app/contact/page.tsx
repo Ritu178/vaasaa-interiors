@@ -1,6 +1,7 @@
 import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
 import Reveal from "@/components/Reveal";
+import Icon from "@/components/Icon";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbJsonLd, pageMeta } from "@/lib/seo";
 import { BRAND, waLink } from "@/lib/data";
@@ -23,7 +24,7 @@ export default function Contact() {
                 <p><strong>Phone / WhatsApp</strong><br />{BRAND.phone}</p>
                 <p><strong>Shop timings</strong><br />{BRAND.timings}</p>
                 <div className="flex flex-wrap gap-4 pt-2">
-                  <a className="btn btn-green" href={`tel:${BRAND.phone}`}><span className="animate-wiggle">📞</span> Call now</a>
+                  <a className="btn btn-green" href={`tel:${BRAND.phone}`}><Icon name="phone" className="size-4" /> Call now</a>
                   <a className="btn btn-gold" target="_blank" rel="noreferrer" href={waLink("Hello VaaSaa Interiors!")}>WhatsApp</a>
                 </div>
               </div>

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { FILTERS, PRODUCTS, priceLabel, waLink } from "@/lib/data";
 import Img from "./Img";
-import Reveal from "./Reveal";
+import Icon from "./Icon";
 import { useCart } from "./CartProvider";
 
 export default function ProductGrid() {
@@ -29,7 +29,7 @@ export default function ProductGrid() {
                 <p className="mb-4 mt-1 font-bold text-brand2">{priceLabel(p)}</p>
                 <div className="grid gap-2.5">
                   {p.price && (
-                    <button className="btn btn-gold btn-block group/cart" onClick={() => add(p)}><span className="inline-block group-hover/cart:animate-wiggle">🛒</span> Add to cart</button>
+                    <button className="btn btn-gold btn-block group/cart" onClick={() => add(p)}><Icon name="cart" className="size-4" /> Add to cart</button>
                   )}
                   <a className="btn btn-green btn-block" target="_blank" rel="noreferrer"
                     href={waLink(`Hello VaaSaa Interiors, I'm interested in "${p.name}". Please share details and price.`)}>
